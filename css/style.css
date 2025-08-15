@@ -1401,3 +1401,23 @@ ul {
         right: -20px;
     }
 }
+
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        order: 1;
+    }
+    .menu-toggle {
+        order: 2;
+        margin-left: auto;
+    }
+    .nav-menu {
+        order: 3;
+    }
+    /* ...existing code... */
+}
