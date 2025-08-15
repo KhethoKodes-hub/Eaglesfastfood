@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | Eagle's Fast Food</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #E63946;
+            --primary-dark: #C1121F;
+            --secondary: #1D3557;
+            --secondary-light: #457B9D;
+            --accent: #FFD166;
+            --light: #F1FAEE;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #F8F9FA;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button.secondary {
+            background: var(--secondary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--secondary-light);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 300px;
+            background: url('./assets/eaglesfast.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(29, 53, 87, 0.7);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .flavor-of-week {
+            background: var(--secondary);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fotw-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .flavor-of-week h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .flavor-of-week p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .tab-button {
+            padding: 8px 20px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-button.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .item-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .item-image {
+            transform: scale(1.1);
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-info h3 {
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .item-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .download-menu {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about .logo {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-about .logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links ul a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact ul li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-contact ul i {
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        .footer-contact ul a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-contact ul a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-newsletter h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-newsletter h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-newsletter p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: var(--font-body);
+        }
+
+        .newsletter-form button {
+            width: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .menu-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                height: 250px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Eagle's <span>Fast Food</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="catering.html">Catering</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:+2766554433" class="cta-button">Call to Order</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Our Menu</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="menu.html">Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Delicious Offerings</h2>
+                <p>Flavor-packed favorites for every taste</p>
+            </div>
+            
+            <div class="flavor-of-week">
+                <div class="fotw-tag">Flavor of the Week</div>
+                <h3>Peri-Peri Loaded Fries</h3>
+                <p>Crispy fries topped with our signature peri-peri sauce, cheese, and fresh herbs</p>
+                <a href="contact.html" class="cta-button">Order Now</a>
+            </div>
+            
+            <div class="category-tabs">
+                <button class="tab-button active" data-category="all">All Items</button>
+                <button class="tab-button" data-category="sandwiches">Sandwiches</button>
+                <button class="tab-button" data-category="fries">Loaded Fries</button>
+                <button class="tab-button" data-category="platters">Platters</button>
+                <button class="tab-button" data-category="meals">Meals</button>
+            </div>
+            
+            <div class="menu-items">
+                <!-- Big Boy Sandwich -->
+                <div class="menu-item" data-category="sandwiches">
+                    <div class="item-image" style="background-image: url('./assets/eaglessandwich.png');"></div>
+                    <div class="item-info">
+                        <h3>Big Boy Sandwich</h3>
+                        <p>Our signature sandwich with double beef patty, cheese, and special sauce</p>
+                        <div class="item-price">R65</div>
+                    </div>
+                </div>
+                
+                <!-- Chicken Sandwich -->
+                <div class="menu-item" data-category="sandwiches">
+                    <div class="item-image" style="background-image: url('./assets/eaglessandwich2.png');"></div>
+                    <div class="item-info">
+                        <h3>Crispy Chicken Sandwich</h3>
+                        <p>Crunchy chicken fillet with mayo and fresh lettuce</p>
+                        <div class="item-price">R55</div>
+                    </div>
+                </div>
+                
+                <!-- Cheese Loaded Fries -->
+                <div class="menu-item" data-category="fries">
+                    <div class="item-image" style="background-image: url('./assets/eaglesfries.png');"></div>
+                    <div class="item-info">
+                        <h3>Cheese Loaded Fries</h3>
+                        <p>Crispy fries smothered in melted cheese and our special seasoning</p>
+                        <div class="item-price">R45</div>
+                    </div>
+                </div>
+                
+                <!-- Bacon Cheese Fries -->
+                <div class="menu-item" data-category="fries">
+                    <div class="item-image" style="background-image: url('./assets/eagleschips.png');"></div>
+                    <div class="item-info">
+                        <h3>Bacon Cheese Fries</h3>
+                        <p>Golden fries topped with cheese sauce and crispy bacon bits</p>
+                        <div class="item-price">R55</div>
+                    </div>
+                </div>
+                
+                <!-- Chisa Nyama Platter -->
+                <div class="menu-item" data-category="platters">
+                    <div class="item-image" style="background-image: url('./assets/eaglesplatter.png');"></div>
+                    <div class="item-info">
+                        <h3>Chisa Nyama Platter</h3>
+                        <p>Perfect for sharing - grilled meats, pap, and sides for 4-6 people</p>
+                        <div class="item-price">R320</div>
+                    </div>
+                </div>
+                
+                <!-- Snack Platter -->
+                <div class="menu-item" data-category="platters">
+                    <div class="item-image" style="background-image: url('./assets/eaglesplatter2.png');"></div>
+                    <div class="item-info">
+                        <h3>Snack Platter</h3>
+                        <p>Assorted finger foods perfect for parties and events</p>
+                        <div class="item-price">R280</div>
+                    </div>
+                </div>
+                
+                <!-- Burger Meal -->
+                <div class="menu-item" data-category="meals">
+                    <div class="item-image" style="background-image: url('./assets/eaglesburger.png');"></div>
+                    <div class="item-info">
+                        <h3>Burger Meal</h3>
+                        <p>Beef burger with fries and a soft drink</p>
+                        <div class="item-price">R75</div>
+                    </div>
+                </div>
+                
+                <!-- Chicken Meal -->
+                <div class="menu-item" data-category="meals">
+                    <div class="item-image" style="background-image: url('./assets/eaglesfastfood.png');"></div>
+                    <div class="item-info">
+                        <h3>Chicken Meal</h3>
+                        <p>2-piece chicken with fries and a soft drink</p>
+                        <div class="item-price">R65</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-menu">
+                <a href="#" class="cta-button secondary"><i class="fas fa-download"></i> Download Full Menu (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">Eagle's <span>Fast Food</span></a>
+                    <p>Bringing international fast food standards to Postmasburg with quality, flavor, and community at our core.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Postmasburg, NC</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+2766554433">+27 66 554 433</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@eaglesfastfood.co.za">info@eaglesfastfood.co.za</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Eagle's Fast Food. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Sticky navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Menu category filtering
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                
+                // Filter menu items
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Animate menu items when they come into view
+        const animateMenuItems = function() {
+            const items = document.querySelectorAll('.menu-item');
+            
+            items.forEach(item => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (itemPosition < windowHeight - 100) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.menu-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+        });
+        
+        // Run animation check on load and scroll
+        window.addEventListener('load', animateMenuItems);
+        window.addEventListener('scroll', animateMenuItems);
+        
+        // Active link highlighting
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinksAll = document.querySelectorAll('.nav-menu a');
+        
+        navLinksAll.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

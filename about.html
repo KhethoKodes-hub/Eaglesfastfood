@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Eagle's Fast Food</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #E63946;
+            --primary-dark: #C1121F;
+            --secondary: #1D3557;
+            --secondary-light: #457B9D;
+            --accent: #FFD166;
+            --light: #F1FAEE;
+            --dark: #212529;
+            --gray: #6C757D;
+            --light-gray: #F8F9FA;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 300px;
+            background: url('./assets/eaglesfries.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(29, 53, 87, 0.7);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+
+        /* About Content */
+        .about-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .founder-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .founder-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .founder-image {
+            flex: 1;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .founder-bio {
+            flex: 1;
+        }
+
+        .founder-bio h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .founder-bio p {
+            margin-bottom: 20px;
+        }
+
+        .qualifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .qualifications span {
+            background: var(--light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h4 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .member-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about .logo {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-about .logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links ul a:hover {
+            opacity: 1;
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact ul li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-contact ul i {
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        .footer-contact ul a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-contact ul a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-newsletter h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-newsletter h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-newsletter p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: var(--font-body);
+        }
+
+        .newsletter-form button {
+            width: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .founder-content {
+                flex-direction: column;
+            }
+
+            .about-image, .founder-image {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                height: 250px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Eagle's <span>Fast Food</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="catering.html">Catering</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:+2766554433" class="cta-button">Call to Order</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>About Us</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>From humble beginnings to serving the community</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/eaglesinterior.png" alt="Eagle's Fast Food Interior">
+                </div>
+                <div class="about-text">
+                    <h3>Bringing Quality Fast Food to Postmasburg</h3>
+                    <p>Founded by Cyrilene Assegaai, Eagle's Fast Food was born from a passion to bring high-quality fast food to our local community. What started as a small eatery has grown into a beloved local institution, known for our commitment to quality, flavor, and excellent service.</p>
+                    <p>We combine international standards with local flavors to create unforgettable taste experiences. Every dish we serve is prepared with care, using fresh ingredients and recipes that have been perfected over time.</p>
+                    <p>Our mission is simple: to serve delicious food that makes people happy. Whether it's our famous Big Boy Sandwiches or our catering platters, we put the same care and attention into every item we serve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section 
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="images/founder.jpg" alt="Cyrilene Assegaai">
+                </div>
+                <div class="founder-bio">
+                    <h3>Meet Cyrilene Assegaai</h3>
+                    <p>Born and raised in Postmasburg, Cyrilene founded Eagle's Fast Food with a vision to create job opportunities for local youth while bringing innovative fast food concepts to our community.</p>
+                    <p>With a background in business management and a passion for culinary excellence, Cyrilene has built Eagle's into a thriving business that stays true to its roots while constantly innovating.</p>
+                    <p>"I wanted to create a place where people could enjoy high-quality fast food without compromising on taste or freshness. Our commitment to quality and community is what sets us apart."</p>
+                    <div class="qualifications">
+                        <span>Zimele Youth Development</span>
+                        <span>First Aid Level 1</span>
+                        <span>Operational Management</span>
+                        <span>Risk Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>We never compromise on the quality of our ingredients or the care we put into preparing our food.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We're proud to be part of the Postmasburg community and are committed to giving back.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We're always looking for new ways to delight our customers with creative menu items.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Hospitality</h3>
+                    <p>Every customer is treated like family with warm, friendly service.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Freshness</h3>
+                    <p>We prepare food fresh throughout the day to ensure the best possible taste.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We do business honestly and ethically, treating everyone with respect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section 
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>The people who make it all possible</p>
+            </div>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('images/team1.jpg');"></div>
+                    <div class="member-info">
+                        <h4>Thabo Mokoena</h4>
+                        <p>Head Chef</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('images/team2.jpg');"></div>
+                    <div class="member-info">
+                        <h4>Lerato Smith</h4>
+                        <p>Service Manager</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('images/team3.jpg');"></div>
+                    <div class="member-info">
+                        <h4>James Khumalo</h4>
+                        <p>Catering Coordinator</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image" style="background-image: url('images/team4.jpg');"></div>
+                    <div class="member-info">
+                        <h4>Nomsa Dlamini</h4>
+                        <p>Marketing Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">Eagle's <span>Fast Food</span></a>
+                    <p>Bringing international fast food standards to Postmasburg with quality, flavor, and community at our core.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                        <li><a href="vision.html">Our Vision</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Postmasburg, NC</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+2766554433">+27 66 554 433</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@eaglesfastfood.co.za">info@eaglesfastfood.co.za</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Eagle's Fast Food. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Sticky navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.about-image, .about-text, .founder-image, .founder-bio, .value-card, .team-member');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.about-image, .about-text, .founder-image, .founder-bio, .value-card, .team-member').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+        });
+        
+        // Run animation check on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Active link highlighting
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinksAll = document.querySelectorAll('.nav-menu a');
+        
+        navLinksAll.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

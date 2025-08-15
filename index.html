@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle's Fast Food | Premium Fast Food & Catering</title>
+    <meta name="description" content="High quality fast food and catering services in Postmasburg. Big Boy Sandwiches, loaded fries, and event catering.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Eagle's <span>Fast Food</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="catering.html">Catering</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:+2766554433" class="cta-button nav-cta">Call to Order</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Flavor That <span>Soars</span></h1>
+                <p class="hero-subtitle">Fast, Fresh, and Fearless!</p>
+                <p class="hero-text">Premium Fast Food & Catering for Every Occasion</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="cta-button">View Menu</a>
+                    <a href="#catering" class="cta-button secondary">Book Catering</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="about.html"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>Bringing international flavors to Postmasburg</p>
+            </div>
+            <div class="about-content">
+                <div class="about-video">
+                    <video controls poster="./assets/eaglesvidposter.png" width="100%" style="border-radius:10px;">
+            <source src="./assets/eaglesvid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+                    <!--<div class="video-placeholder">
+                        <i class="fas fa-play"></i>
+                    </div>-->
+                </div>
+                <div class="about-text">
+                    <h3>Founded by Cyrilene Assegaai</h3>
+                    <p>Eagle's Fast Food was born from a passion to bring high-quality fast food to our local community. We combine international standards with local flavors to create unforgettable taste experiences.</p>
+                    <p>From our famous Big Boy Sandwiches to our catering platters, every item is prepared with care, quality ingredients, and a commitment to excellence.</p>
+                    <!--<div class="founder-bio">
+                        <div class="founder-image"></div>
+                        <div class="founder-info">
+                            <h4>Cyrilene Assegaai</h4>
+                            <p>Founder & CEO</p>
+                            <div class="qualifications">
+                                <span>Zimele Youth Development</span>
+                                <span>First Aid Level 1</span>
+                                <span>Operational Management</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>Flavor-packed favorites for every taste</p>
+            </div>
+            
+            <div class="flavor-of-week">
+                <div class="fotw-tag">Flavor of the Week</div>
+                <h3>Peri-Peri Loaded Fries</h3>
+                <p>Crispy fries topped with our signature peri-peri sauce, cheese, and fresh herbs</p>
+                <a href="#contact" class="cta-button small">Order Now</a>
+            </div>
+            
+            <div class="menu-categories">
+                <div class="category-tabs">
+                    <button class="tab-button active" data-category="all">All Items</button>
+                    <button class="tab-button" data-category="sandwiches">Sandwiches</button>
+                    <button class="tab-button" data-category="fries">Loaded Fries</button>
+                    <button class="tab-button" data-category="platters">Platters</button>
+                    <button class="tab-button" data-category="meals">Meals</button>
+                </div>
+                
+                <div class="menu-items">
+                    <!-- Big Boy Sandwich -->
+                    <div class="menu-item" data-category="sandwiches">
+                        <div class="item-image sandwich-1"></div>
+                        <div class="item-info">
+                            <h3>Big Boy Sandwich</h3>
+                            <p>Our signature sandwich with double beef patty, cheese, and special sauce</p>
+                            <!--<div class="item-price">R65</div>-->
+                        </div>
+                    </div>
+                    
+                    <!-- Loaded Fries -->
+                    <div class="menu-item" data-category="fries">
+                        <div class="item-image fries-1"></div>
+                        <div class="item-info">
+                            <h3>Cheese Loaded Fries</h3>
+                            <p>Crispy fries smothered in melted cheese and our special seasoning</p>
+                            <!--<div class="item-price">R45</div>-->
+                        </div>
+                    </div>
+                    
+                    <!-- Chisa Nyama Platter -->
+                    <div class="menu-item" data-category="platters">
+                        <div class="item-image platter-1"></div>
+                        <div class="item-info">
+                            <h3>Chisa Nyama Platter</h3>
+                            <p>Perfect for sharing - grilled meats, pap, and sides for 4-6 people</p>
+                            <!--<div class="item-price">R320</div>-->
+                        </div>
+                    </div>
+                    
+                    <!-- Burger Meal -->
+                    <div class="menu-item" data-category="meals">
+                        <div class="item-image meal-1"></div>
+                        <div class="item-info">
+                            <h3>Burger Meal</h3>
+                            <p>Beef burger with fries and a soft drink</p>
+                            <!--<div class="item-price">R75</div>-->
+                        </div>
+                    </div>
+                    
+                    <!-- Snack Platter -->
+                    <div class="menu-item" data-category="platters">
+                        <div class="item-image platter-2"></div>
+                        <div class="item-info">
+                            <h3>Snack Platter</h3>
+                            <p>Assorted finger foods perfect for parties and events</p>
+                            <!--<div class="item-price">R280</div>-->
+                        </div>
+                    </div>
+                    
+                    <!-- Chicken Sandwich -->
+                    <div class="menu-item" data-category="sandwiches">
+                        <div class="item-image sandwich-2"></div>
+                        <div class="item-info">
+                            <h3>Crispy Chicken Sandwich</h3>
+                            <p>Crunchy chicken fillet with mayo and fresh lettuce</p>
+                            <!--<div class="item-price">R55</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-menu">
+                <!--<a href="#" class="cta-button secondary"><i class="fas fa-download"></i> Download Full Menu (PDF)</a>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
+    <section class="catering-section" id="catering">
+        <div class="container">
+            <div class="section-header">
+                <h2>Catering Services</h2>
+                <p>Bringing our flavors to your events</p>
+            </div>
+            
+            <div class="catering-content">
+                <div class="catering-text">
+                    <h3>From office lunches to grand celebrations</h3>
+                    <p>We specialize in custom menus for all types of events. Whether it's a corporate meeting, birthday party, or baby shower, we'll work with you to create the perfect menu.</p>
+                    
+                    <div class="catering-features">
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <h4>Custom Menus</h4>
+                            <p>Tailored to your event and budget</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Fresh Ingredients</h4>
+                            <p>Quality you can taste</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-truck"></i>
+                            <h4>Delivery & Setup</h4>
+                            <p>We come to you</p>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Get a Catering Quote</a>
+                </div>
+                
+                <div class="catering-gallery">
+                    <div class="gallery-main">
+                        <div class="gallery-item active" style="background-image: url('./assets/eaglesprocatering.png');">
+                            <div class="gallery-caption">
+                                <h4>Corporate Events</h4>
+                                <p>Professional catering for business meetings</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="thumb-item active" style="background-image: url('./assets/eaglescatering.png');"></div>
+                        <div class="thumb-item" style="background-image: url('./assets/eaglesca.png');"></div>
+                        <div class="thumb-item" style="background-image: url('./assets/eaglesfastfood.png');"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials">
+                <h3>What Our Clients Say</h3>
+                <div class="testimonial-slider">
+                    <div class="testimonial active">
+                        <p>"Eagle's made my baby shower a hit! The snack platters were delicious and beautifully presented."</p>
+                        <div class="client-info">
+                            <strong>Lalla</strong>
+                            <span>Baby Shower Client</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Best catering in Postmasburg! Our office lunch was delivered on time and everyone loved it."</p>
+                        <div class="client-info">
+                            <strong>Naape S.</strong>
+                            <span>Phogoshe Trading Enterprises</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The Big Boy Sandwich lives up to the hype! We order catering for all our staff events now."</p>
+                        <div class="client-info">
+                            <strong>Kikanetswe</strong>
+                            <span>Birthday Celebration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section" id="vision">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Vision</h2>
+                <p>Growing together with our community</p>
+            </div>
+            
+            <div class="vision-content">
+                <div class="vision-text">
+                    <h3>More Than Just Food</h3>
+                    <p>We don't just serve food—we create opportunities. Our goal is to expand and empower young entrepreneurs in Tsantsabane through job creation and franchise opportunities.</p>
+                    
+                    <div class="vision-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">Meals Served Daily</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Events Catered Monthly</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="5">0</div>
+                            <div class="stat-label">Jobs Created</div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button secondary">Partner With Us</a>
+                </div>
+                
+                <div class="vision-timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 1: Local Dominance</h4>
+                            <p>Establishing Eagle's as the premier fast food destination in Postmasburg</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 2: Franchise Expansion</h4>
+                            <p>Opening additional locations in Tsantsabane</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 3: National Footprint</h4>
+                            <p>Growing into a national franchise chain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service">
+                                <option value="">Select Service</option>
+                                <option value="catering">Catering Inquiry</option>
+                                <option value="order">Food Order</option>
+                                <option value="franchise">Franchise Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Visit or Call Us</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Postmasburg, Northern Cape, South Africa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+2766554433">+27 66 554 433</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@eaglesfastfood.co.za">info@eaglesfastfood.co.za</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 8am - 8pm</p>
+                            <p>Saturday: 9am - 6pm</p>
+                            <p>Sunday: 10am - 4pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div class="map">
+                    <!-- Google Maps embed would go here -->
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Map of our location in Postmasburg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="logo">Eagle's <span>Fast Food</span></a>
+                    <p>Bringing international fast food standards to Postmasburg with quality, flavor, and community at our core.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#catering">Catering</a></li>
+                        <li><a href="#vision">Our Vision</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Postmasburg, NC</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+2766554433">+27 66 554 433</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@eaglesfastfood.co.za">info@eaglesfastfood.co.za</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for special offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Eagle's Fast Food. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live Chat Widget -->
+    <div class="live-chat">
+        <div class="chat-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-box">
+            <div class="chat-header">
+                <h4>Chat with Us</h4>
+                <button class="chat-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages">
+                <div class="chat-message bot">
+                    <p>Hi there! How can we help you today?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = Math.ceil(target / 60);
+
+            if (count < target) {
+                counter.innerText = count + increment > target ? target : count + increment;
+                setTimeout(updateCount, 30);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    });
+});
+</script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/scroll.js"></script>
+</body>
+</html>
